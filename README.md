@@ -3,8 +3,6 @@ Desarrollo de una aplicación IoT web de REGISTRO DE DATOS sobre un(os) sensor(e
 
 Frontend => Vue.js | Backend => Node.js | Database => MySQL
 
-santiagox0320@gmail.com
-
 Requisitos funcionales:
 
 - La aplicación almacenará datos de temperatura, humedad y gps desde un dispositivo externo
