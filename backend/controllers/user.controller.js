@@ -10,7 +10,6 @@ userCtrl.getUsers = async(req,res)=>{
         if(!users) return res.status(404).send({message: `No existen usuarios`})
         res.status(200).send(users)
     })
-    res.status(200).send(users)
 }
 
 userCtrl.getUser = async(req,res)=>{
