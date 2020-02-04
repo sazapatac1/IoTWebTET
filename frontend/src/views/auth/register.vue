@@ -1,10 +1,13 @@
 <template>
-    <div class="container">
+    <div class="container mt-50">
         <div class="column is-6 is-offset-3">
             <h3 class="title is-3">
                 Create Account
             </h3>
             <hr>
+            <div class="notification is-danger " v-if="error">
+                {{error}}
+            </div>
             <form action="#" @submit.prevent="register">
                 <div class="field">
                 <label class="label">Username</label>
@@ -26,11 +29,7 @@
                 </div>
                 </div>
                 <button type="submit" class="button is-link">Sign up</button>
-
             </form>
-            <div class="notification is-danger " v-if="error">
-                {{error}}
-            </div>
         </div>    
     </div>
 </template>
@@ -50,6 +49,7 @@ export default {
         register(){
             if (this.username && this.email && this.password){
                 //post user
+                
             } else{
                 this.error = 'Todos los campos son requeridos prro'
             }
