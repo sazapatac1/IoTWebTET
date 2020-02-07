@@ -1,8 +1,9 @@
 <template>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <nav class="navbar has-background-primary" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <router-link class="navbar-item" to="/">
-            <h3 class="title is-3">IoT Web TET</h3>
+            <img src="https://www.flaticon.es/premium-icon/icons/svg/1698/1698293.svg" width="30" height="100">
+            <p class="title ml-5">IoT Web TET</p>
             </router-link>
 
             <a role="button" class="navbar-burger burger" :class="{'is-active': isOpen}" @click.prevent="toggleMenu" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -22,10 +23,10 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        <router-link class="button is-link" to="/register">
+                        <router-link class="button is-primary is-light" to="/register">
                             <strong>Sign up</strong>
                         </router-link>
-                        <router-link class="button is-link is-light" to="/login">
+                        <router-link class="button is-primary" to="/login">
                             Log in
                         </router-link>
                     </div>
@@ -33,6 +34,7 @@
             </div>
         </div>
     </nav>
+    
 </template>
 <script>
 export default {

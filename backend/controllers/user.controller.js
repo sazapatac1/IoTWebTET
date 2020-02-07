@@ -37,7 +37,7 @@ userCtrl.signUp = async(req,res)=>{
 
 userCtrl.signIn = async(req, res)=>{
     const expiresIn = 24*60*60
-    await User.findOne({ username: req.body.username }).select('email username password').exec(function (err, user) {
+    await User.findOne({ email: req.body.email }).select('email username password').exec(function (err, user) {
         if (err) return res.status(500).send({ message: err })
         if (!user) return res.status(404).send({ message: 'Usuario no registrado' })
         if (bcrypt.compareSync(req.body.password, user.password)) {

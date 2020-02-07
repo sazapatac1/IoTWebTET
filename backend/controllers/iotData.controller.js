@@ -6,7 +6,15 @@ iotDataCtrl.getIotData = async(req,res)=>{
     await IotData.find({},(err,iotData) =>{
         if(err) return res.status(500).send({message : `Error al realizar la petición: ${err}` })
         if(!iotData) return res.status(404).send({message: `No existen datos`})
-        res.status(200).send({iotData})
+        res.status(200).send(iotData)
+    })
+}
+
+iotDataCtrl.getIotDataByUser = async(req,res)=>{
+    await IotData.find({id_userF: req.body.id_userF}, ' ', (err, iotData) => {
+        if(err) return res.status(500).send({message : `Error al realizar la petición: ${err}` })
+        if(!iotData) return res.status(404).send({message: `No existen datos del usuario`})
+        res.status(200).send(iotData)
     })
 }
 

@@ -1,4 +1,5 @@
 <template>
+<div class="">
     <footer class="footer footer-manual">
         <div class="content has-text-centered">
             <p>
@@ -6,6 +7,7 @@
             </p>
         </div>
     </footer>
+</div>
 </template>
 
 <script>

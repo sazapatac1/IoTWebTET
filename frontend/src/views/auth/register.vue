@@ -28,7 +28,7 @@
                     <input class="input" type="password" v-model="password">
                 </div>
                 </div>
-                <button type="submit" class="button is-link">Sign up</button>
+                <button type="submit" class="button is-primary">Sign up</button>
             </form>
         </div>    
     </div>
@@ -47,11 +47,24 @@ export default {
     },
     methods: {
         register(){
+            console.log("presione")
             if (this.username && this.email && this.password){
-                //post user
+                let data = {
+                    username: this.username,
+                    email: this.email,
+                    password: this.password
+                }
+                this.$http.post("http://localhost:3000/api/users/signUp",data)
+                    .then((response)=>{
+                        const token = (response.data.accessToken)
+                        localStorage.setItem('token', token)
+                        this.$router.push({name: 'home'})
+                    }).catch(err =>{
+                        this.error = err.message
+                    })
                 
-            } else{
-                this.error = 'Todos los campos son requeridos prro'
+            }else{
+                this.error = 'Todos los campos son requeridos'
             }
         }
     }

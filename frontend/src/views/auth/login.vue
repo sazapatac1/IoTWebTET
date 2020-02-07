@@ -21,11 +21,11 @@
                     <input class="input" type="password" v-model="password">
                 </div>
                 </div>
-                <button type="submit" class="button is-link">Sign in</button>
+                <button type="submit" class="button is-primary">Sign in</button>
             </form>
 
             <div class="mt-10 has-text-centered">
-                <p>New to IoT WEB? <router-link to="/register">Create an account</router-link></p>
+                <p>New to IoT WEB? <router-link to="/register" class="is-primary">Create an account</router-link></p>
             </div>
         </div>    
     </div>
@@ -39,6 +39,31 @@ export default {
             email: '',
             password: '',
             error: ''
+        }
+    },
+    methods: {
+        login(){
+            this.error = ''
+            if (this.email && this.password){
+                let data = {
+                    email: this.email,
+                    password: this.password
+                }
+                this.$http.post("http://localhost:3000/api/users/signIn",data)
+                    .then((response)=>{
+                        const token = response.data.accessToken
+                        const userID = response.data.id
+                        localStorage.setItem('token', token)
+                        localStorage.setItem('user_id', userID)
+                        this.$router.push({name: 'home'})
+                    }).catch(err =>{
+                        this.error = err.message
+                    })
+                    
+            } else{
+                this.error = 'Todos los campos son requeridos'
+            }
+            
         }
     }
 }
