@@ -19,3 +19,9 @@ Requisitos no funcionales:
 - La contraseña de los usuarios estarán encriptadas
 - La aplicación debe tener una disponibilidad del 99% de las veces en que un usuario intente accederlo.
 - La aplicación protegerá los datos del acceso no autorizado
+
+
+Nombre alumno: Santiago Arturo Zapata Chacón.
+Código alumno: 201717515010.
+Email-EAFIT: sazapatac1@eafit.edu.co.
+Email-Gmail: santiagox0320@gmail.com.
