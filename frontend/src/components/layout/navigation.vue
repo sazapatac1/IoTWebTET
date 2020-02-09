@@ -19,16 +19,22 @@
                     Home
                 </router-link>
             </div>
-
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        <router-link class="button is-primary is-light" to="/register">
-                            <strong>Sign up</strong>
-                        </router-link>
-                        <router-link class="button is-primary" to="/login">
-                            Log in
-                        </router-link>
+                        <template v-if="!loggedIn">
+                            <router-link class="button is-primary is-light" to="/register">
+                                <strong>Sign up</strong>
+                            </router-link>
+                            <router-link class="button is-primary" to="/login">
+                                Log in
+                            </router-link>
+                        </template>
+                        <template v-else>
+                            <img class="profile-ico" src="../../assets/profile.png" width="30" height="100">
+                            <p class="username-css">Hi, {{nameUser}}</p>
+                            <a @click="logout" class="button is-danger">Logout</a>
+                        </template>
                     </div>
                 </div>
             </div>
@@ -40,14 +46,40 @@
 export default {
     data(){
         return{
-            isOpen: false
+            isOpen: false,
+            loggedIn: '',
+            nameUser: ''
         }
     },
     methods:{
         toggleMenu(){
             const status = !this.isOpen
             this.isOpen = status
+        },
+        logout(){
+            this.loggedIn = false
+            localStorage.removeItem('token');
+            localStorage.removeItem('user_id');
+            this.$router.push({name: 'login'})
+        },
+        getUsername(){
+            let id_user = localStorage.getItem('user_id')
+            this.$http.get('http://localhost:3000/api/users/'+id_user)
+                .then(response => {
+                    this.nameUser = response.data.username
+                })
         }
-    }
+    },
+    mounted() {
+        this.getUsername()
+        this.loggedIn = localStorage.getItem('token')
+    },
+    watch: {
+        loggedIn:{
+            handler: function() {
+                //console.log(this.loggedIn)                                  
+            },
+        }
+    },
 }
 </script>

@@ -30,6 +30,10 @@
                 </div>
                 <button type="submit" class="button is-primary">Sign up</button>
             </form>
+
+            <div class="mt-10 has-text-centered">
+                <p>Already have an account?<router-link to="/login" class="is-primary"> Sign-in</router-link></p>
+            </div>
         </div>    
     </div>
 </template>

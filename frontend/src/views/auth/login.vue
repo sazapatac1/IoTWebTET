@@ -25,7 +25,7 @@
             </form>
 
             <div class="mt-10 has-text-centered">
-                <p>New to IoT WEB? <router-link to="/register" class="is-primary">Create an account</router-link></p>
+                <p>New user? <router-link to="/register" class="is-primary">Create an account</router-link></p>
             </div>
         </div>    
     </div>
